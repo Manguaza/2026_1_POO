@@ -46,16 +46,20 @@ class UI:
         print("1-Inserir 2-Listar 3-Atualizar 4-Excluir 9-Fim")
         return int(input("Informe uma opção: "))
     @staticmethod
-    def inserir():
+    def inserir():                           # C - Create
         print("Cadastro de Clientes")
         id = int(input("Informe o id: "))
         nome = input("Informe o nome: ")
         c = Cliente(id, nome)
         ClienteDAO().inserir(c)
     @staticmethod
-    def listar():
+    def listar():                            # R - Read
         print("Listagem de Clientes")
         for c in ClienteDAO().listar(): print(c)
+    def atualizar():                         # U - Update
+        pass
+    def excluir():                           # D - Delete
+        pass    
 
 UI.main()
 
