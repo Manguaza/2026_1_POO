@@ -1,5 +1,6 @@
-from cliente import Cliente, ClienteDAO
-from categoria import Categoria, CategoriaDAO
+#from cliente import Cliente, ClienteDAO
+#from categoria import Categoria, CategoriaDAO
+from views import View
 
 class UI:
     @staticmethod
@@ -21,6 +22,7 @@ class UI:
         print("5-Inserir 6-Listar 7-Atualizar 8-Excluir")
         print("9-Fim")
         return int(input("Informe uma opção: "))
+
     @staticmethod
     def cliente_inserir():                           # C - Create
         print("Cadastro de Clientes")
@@ -28,36 +30,44 @@ class UI:
         nome = input("Informe o nome: ")
         email = input("Informe o e-mail: ")
         fone = input("Informe o fone: ")
-        c = Cliente(0, nome, email, fone)
-        ClienteDAO().inserir(c)
+        #c = Cliente(0, nome, email, fone)
+        #ClienteDAO().inserir(c)
+        View.cliente_inserir(nome, email, fone)
+
     @staticmethod
     def cliente_listar():                            # R - Read
         print("Listagem de Clientes")
-        for c in ClienteDAO().listar(): print(c)
+        #for c in ClienteDAO().listar(): print(c)
+        for c in View.cliente_listar(): print(c)
+
     def cliente_atualizar():                         # U - Update
         UI.listar()
         id = int(input("Qual o id do cliente a ser atualizado: "))
         nome = input("Informe o novo nome: ")
         email = input("Informe o novo e-mail: ")
         fone = input("Informe o novo fone: ")
-        c = Cliente(id, nome, email, fone)
-        ClienteDAO().atualizar(c)
+        #c = Cliente(id, nome, email, fone)
+        #ClienteDAO().atualizar(c)
+        View.cliente_atualizar(id, nome, email, fone)
     def cliente_excluir():                           # D - Delete
         UI.listar()
         id = int(input("Qual o id do cliente a ser excluído: "))
-        c = Cliente(id, "", "", "")
-        ClienteDAO().excluir(c)
+        #c = Cliente(id, "", "", "")
+        #ClienteDAO().excluir(c)
+        View.cliente_excluir(id)
 
     @staticmethod
     def categoria_inserir():                           # C - Create
         print("Cadastro de Categorias")
         desc = input("Informe a descrição: ")
-        c = Categoria(0, desc)
-        CategoriaDAO().inserir(c)
+        #c = Categoria(0, desc)
+        #CategoriaDAO().inserir(c)
+        View.categoria_inserir(desc)
+
     @staticmethod
     def categoria_listar():                            # R - Read
         print("Listagem de Categorias")
-        for c in CategoriaDAO().listar(): print(c)
-
+        #for c in CategoriaDAO().listar(): print(c)
+        for c in View.categoria_listar(): print(c)
 
 UI.main()
