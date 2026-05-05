@@ -4,17 +4,25 @@ from categoria import Categoria, CategoriaDAO
 
 class View: # nenhum print, nenhum input
     @staticmethod
-    def cliente_inserir(nome, email, fone):
-        c = Cliente(0, nome, email, fone)
+    def cliente_validar(email, senha):
+        clientes = ClienteDAO().listar()
+        for c in clientes:
+            if c.email == email and c.senha == senha: return c
+        return None    
+
+    @staticmethod
+    def cliente_inserir(nome, email, fone, senha):
+        c = Cliente(0, nome, email, fone, senha)
         ClienteDAO().inserir(c)
+        #(new ClienteDAO()).inserir(c) // Java
 
     @staticmethod
     def cliente_listar():
         return ClienteDAO().listar()
 
     @staticmethod
-    def cliente_atualizar(id, nome, email, fone):
-        c = Cliente(id, nome, email, fone)
+    def cliente_atualizar(id, nome, email, fone, senha):
+        c = Cliente(id, nome, email, fone, senha)
         ClienteDAO().atualizar(c)
 
     @staticmethod
